@@ -1,0 +1,3 @@
+var Translations = {
+  locale: '<%= locale %>'
+};

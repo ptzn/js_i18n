@@ -1,0 +1,47 @@
+= JsI18n
+
+This is a rails plugin for i18n messages in javascript code.
+It not depends from any javascript frameworks, so you can use it with prototype.js, jQuery or any other without modification.
+
+== Installation & Usage
+
+After plugin installing you need to call generator with required locales as arguments:
+
+script/generate js_locales en ru
+
+This command copy i18n.js file into public/javascripts directory and create two locale files under public/javascripts/locales directory.
+
+After this add following line into your view to make i18n functionality available for your scripts:
+
+<%= javascript_i18n_include %>
+
+This helper include i18n.js file and required js locale file, depending on I18n.locale rails environment.
+
+Locale js files contains just a hash object with name Translations and one required field "locale", when "locale" is not defined "en" will be used as default value.
+
+So here is basic content for such file (public/javascripts/locales/ru.js):
+var Translations = {
+  locale: 'ru'
+};
+
+Message can be a pair with string key:
+var Translations = {
+  locale: 'ru',
+  "foo.bar": "baz"
+};
+
+or a nested hash:
+var Translations = {
+  locale: 'ru',
+  foo: {
+    bar: "baz"
+  }
+};
+
+You can use it from javascript in the same way as from ruby code, i.e.:
+var fooMessage = I18n.t("foo.bar");
+
+To get current locale you can call I18n.locale() method.
+
+== Copyright
+Copyright (c) 2010 Anton Dyachuk, released under the MIT license

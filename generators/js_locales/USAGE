@@ -1,0 +1,10 @@
+Description:
+    Generate a templates for javascript locales.
+
+Example:
+    ./script/generate js_locales en ru 
+
+    This will create:
+        public/javascripts/i18n.js
+        public/javascripts/locales/en.js
+        public/javascripts/locales/ru.js
